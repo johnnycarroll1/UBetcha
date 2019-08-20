@@ -1,5 +1,4 @@
 """UBetcha URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
 Examples:
@@ -19,6 +18,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from users import views as user_views
+from mlb_odds import views as mlb_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,6 +27,8 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('', include('blog.urls')),
+    path('mlb_odds/', mlb_views.index),
+    path('account_increase/', user_views.increase_account),
 ]
 
 if settings.DEBUG:

@@ -38,3 +38,9 @@ def profile(request):
         'p_form': p_form
     }
     return render(request, 'users/profile.html', context)
+
+def increase_account(request):
+    username = request.user
+    username.account_balance += 1000
+    return render(request, 'users/profile.html')
+
